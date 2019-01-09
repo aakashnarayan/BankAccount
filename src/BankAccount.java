@@ -47,13 +47,20 @@ public abstract class BankAccount {
 	
 	public void transfer(BankAccount other, double amt)
 	{
-		this.withdraw(amt);
+		if(!other.getName().equals(getName()) || amt < 0 || balance - amt < 0)
+		{
+			throw new IllegalArgumentException();
+		}
+		else
+		{
+		withdraw(amt);
 		other.deposit(amt);
+		}
 	}
 	
 	public String toString()
 	{
-		return "" + acctNum + "/t" + name + "/t$" + balance;
+		return "" + acctNum + "\t" + name + "\t$" + balance;
 	}
 	
 	public abstract void endOfMonthUpdate();

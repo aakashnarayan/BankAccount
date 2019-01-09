@@ -1,5 +1,6 @@
 
-public class CheckingAccount extends BankAccount {
+public class CheckingAccount extends BankAccount 
+{
 
 	//fields
 	private final double OVER_DRAFT_FEE;
@@ -55,10 +56,14 @@ public class CheckingAccount extends BankAccount {
 			super.withdraw(TRANSACTION_FEE);
 		}
 		
-		if ((super.getBalance() - amt) < 0)
+		if ((super.getBalance()) < 0)
 		{
 			super.withdraw(OVER_DRAFT_FEE);
 		}
-		
+	}
+	
+	public void endOfMonthUpdate()
+	{
+		numTransactions = 0;
 	}
 }
